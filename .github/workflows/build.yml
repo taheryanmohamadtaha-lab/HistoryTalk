@@ -46,11 +46,14 @@ jobs:
           done
           ls -l app/src/main/assets/fonts
 
+      - name: اجازه اجرای gradlew (آپلود از مرورگر بیت اجرایی را حذف می‌کند)
+        run: chmod +x gradlew
+
       - name: تست‌های واحد
-        run: ./gradlew --no-daemon testDebugUnitTest
+        run: bash gradlew --no-daemon testDebugUnitTest
 
       - name: ساخت APK دیباگ (همیشه قابل نصب)
-        run: ./gradlew --no-daemon assembleDebug
+        run: bash gradlew --no-daemon assembleDebug
         env:
           VERSION_CODE: ${{ github.run_number }}
 
@@ -60,7 +63,7 @@ jobs:
 
       - name: ساخت APK امضاشده‌ی انتشار
         if: env.HAS_KEYSTORE == 'true'
-        run: ./gradlew --no-daemon assembleRelease
+        run: bash gradlew --no-daemon assembleRelease
         env:
           KEYSTORE_FILE: ${{ runner.temp }}/release.jks
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
