@@ -2,7 +2,7 @@ package com.historytalk.app.data.model
 
 import kotlinx.serialization.Serializable
 
-/** قالب JSON پک داده یک شخصیت (assets/figures/*.json یا پک خارجی). */
+/** قالب JSON پک داده یک شخصیت (فایل‌های JSON پوشه assets/figures یا پک خارجی). */
 @Serializable
 data class FigurePack(
     val id: String,
