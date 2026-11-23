@@ -1,0 +1,5 @@
+-keep class com.google.mediapipe.** { *; }
+-dontwarn com.google.mediapipe.**
+-dontwarn com.google.protobuf.**
+-keepclassmembers class * { @kotlinx.serialization.SerialName <fields>; }
+-dontwarn com.google.auto.value.**
